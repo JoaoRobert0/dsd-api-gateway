@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Produtos</title>
+</head>
+<body>
+    <h1>Lista de Produtos</h1>
+
+    <!-- Link para criar um novo produto -->
+    <a href="{% url 'create_produto' %}">Criar Novo Produto</a>
+    <br>
+    <a href="{% url 'soma' %}">Ir para soma calculadora</a>
+    <br>
+    <a href="{% url 'subtracao' %}">Ir para subtração calculadora</a>
+
+
+    {% if produtos %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Preço</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for produto in produtos %}
+                    <tr>
+                        <td>{{ produto.id }}</td>
+                        <td>{{ produto.nome }}</td>
+                        <td>{{ produto.preco }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Não há produtos disponíveis.</p>
+    {% endif %}
+</body>
+</html>

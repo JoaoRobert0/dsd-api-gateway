@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operação de Subtração</title>
+</head>
+<body>
+    <h1>Operação de Subtração</h1>
+    
+    <!-- Formulário para a operação de subtração -->
+    <form action="{% url 'subtracao' %}" method="post">
+        {% csrf_token %}
+        <label for="arg0">Primeiro número:</label>
+        <input type="number" id="arg0" name="arg0" required><br><br>
+
+        <label for="arg1">Segundo número:</label>
+        <input type="number" id="arg1" name="arg1" required><br><br>
+
+        <button type="submit">Calcular</button>
+    </form>
+
+    {% if resultado %}
+        <h3>Resultado da Subtração: {{ resultado }}</h3>
+    {% endif %}
+
+    <a href="{% url 'get_produtos' %}">Voltar para a lista de produtos</a>
+    <br>
+    <a href="{% url 'soma' %}">Ir para soma calculadora</a>
+</body>
+</html>
